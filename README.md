@@ -80,7 +80,6 @@ mkdir sensor_data_project
 cd sensor_data_project
 ```
 
-
 2. Initialize a new Node.js project:
 ```
 npm init -y
