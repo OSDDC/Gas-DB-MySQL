@@ -39,7 +39,6 @@ Schritt 2: Einrichtung des Backend (PHP)
 
 2. Datenbankverbindung (db.php):
 ```
-   <?php
    $servername = "localhost";
    $username = "root";
    $password = "";
@@ -52,12 +51,10 @@ Schritt 2: Einrichtung des Backend (PHP)
    if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
    }
-   ?>
    ```
 
 3. Daten hinzufügen (add_data.php):
 ```
-   <?php
    include 'db.php';
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -74,12 +71,10 @@ Schritt 2: Einrichtung des Backend (PHP)
            echo "Error: " . $sql . "<br>" . $conn->error;
        }
    }
-   ?>
 ```
 
 4. Daten abrufen (get_data.php):
 ```
-   <?php
    include 'db.php';
 
    $sql = "SELECT * FROM readings";
@@ -94,12 +89,11 @@ Schritt 2: Einrichtung des Backend (PHP)
    }
 
    echo json_encode($data);
-   ?>
+
 ```
 
 5. Benutzeranmeldung und Registrierung (auth.php):
 ```
-   <?php
    include 'db.php';
    session_start();
 
@@ -131,7 +125,7 @@ Schritt 2: Einrichtung des Backend (PHP)
            echo "Invalid credentials";
        }
    }
-   ?>
+
 ````
 
 ===============================================
