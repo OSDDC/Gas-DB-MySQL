@@ -75,9 +75,10 @@ Schritt 2: Einrichtung des Backend (PHP)
        }
    }
    ?>
-   
+```
 
 4. Daten abrufen (get_data.php):
+```
    <?php
    include 'db.php';
 
@@ -94,8 +95,10 @@ Schritt 2: Einrichtung des Backend (PHP)
 
    echo json_encode($data);
    ?>
+```
 
 5. Benutzeranmeldung und Registrierung (auth.php):
+```
    <?php
    include 'db.php';
    session_start();
@@ -129,12 +132,14 @@ Schritt 2: Einrichtung des Backend (PHP)
        }
    }
    ?>
+````
 
 ===============================================
 Schritt 3: Einrichtung des Frontend (HTML, CSS, JavaScript)
 ===============================================
 
 6. HTML-Struktur (index.html):
+```
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -148,7 +153,7 @@ Schritt 3: Einrichtung des Frontend (HTML, CSS, JavaScript)
        <!-- Chart.js-Canvas für die Anzeige der Daten als Liniengrafen -->
    </body>
    </html>
-
+```
 ===============================================
 Schritt 4: Sicherheitsmaßnahmen und Berechtigungen
 ===============================================
