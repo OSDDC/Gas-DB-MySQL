@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <h2>Register</h2>
+        <form action="auth.php" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" name="register">Register</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Login</h2>
+        <form action="auth.php" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" name="login">Login</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Add Data</h2>
+        <form action="add_data.php" method="POST">
+            <input type="date" name="date" required>
+            <input type="number" step="0.01" name="LPG" placeholder="LPG" required>
+            <input type="number" step="0.01" name="Hum" placeholder="Humidity" required>
+            <input type="number" step="0.01" name="Temp" placeholder="Temperature" required>
+            <button type="submit">Add Data</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Sensor Data Graph</h2>
+        <canvas id="sensorChart"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            fetch('get_data.php')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(row => row.reading_date);
+                const LPG = data.map(row => row.LPG);
+                const Hum = data.map(row => row.Hum);
+                const Temp = data.map(row => row.Temp);
+
+                const ctx = document.getElementById('sensorChart').getContext('2d');
+                const sensorChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'LPG',
+                                data: LPG,
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Humidity',
+                                data: Hum,
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Temperature',
+                                data: Temp,
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
