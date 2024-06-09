@@ -25,9 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        echo "Login successful";
+        echo "Login successful. <a href='adddata.html'>Add Data</a>";
     } else {
         echo "Invalid credentials";
     }
 }
-?>
